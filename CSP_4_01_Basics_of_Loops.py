@@ -1,16 +1,27 @@
 #All questions must use a loop for full points.
+import random
 
-def oddNumbers(n:int) ->str:
+def oddNumbers(n:int) -> str:
+    out = ""
+    for n in range(1,n+1,2):
+        out += str(n)+ " "
+    return out[:-1]
     """
-    Print out all odd numbers from 1 to n(inclusive) in a single string seperated by spaces.
+    Print out all odd numbers from 1 to n(inclusive) in a single string separated by spaces.
     example oddNumbers(5) -> "1 3 5"
     example oddNumbers(8) -> "1 3 5 7"
     example oddNumbers(-8) -> ""
     """
+print(oddNumbers(5))
 
+def backwards(n)-> str:
+    out = ""
+    for n in range(n, 0, -1):
+        out += str(n) + " "
+    return out[:-1]
+print(backwards(20))
 
-def backwards(n)-> int:
-    """
+"""
     modify the below function such that it prints out all the numbers from n to 1
     inclusive starting at n and counting down to 1
     example backwards(5) -> "5 4 3 2 1"
@@ -18,18 +29,30 @@ def backwards(n)-> int:
     example backwards(-2) -> ""
     """
 
-
-
 def randomRepeating():
+    RandNum = random.randint(1,10)
+    tries = 1
+    while RandNum < 10:
+        RandNum = random.randint(1,10)
+        tries += 1
     """
     Print out a random number from 1-10 until you get a 10. Then print out how many
     times it took to roll a 10
     NOTE: Given randomness no test for this question
     :return:
     """
-    tries = 0
     print(f"it took {tries} tries to get a 10")
+
 def randomRange(n):
+    x = 1
+    RandNum = random.randint(1,100)
+    while x < n:
+        x += 1
+        TempRand = random.randint(1,100)
+        if TempRand > RandNum:
+            RandNum = TempRand
+    return(RandNum)
+
     """
     Generate a random number from 1 to 100 n number of times. Then after that is
     done print out what the highest number and the lowers number was from the rolled numbers.
@@ -38,6 +61,16 @@ def randomRange(n):
     :return:
     """
 def reverse(word:str)->str:
+    out = ""
+    n = len(word) - 1
+    while len(out) < len(word):
+        out += word[n]
+        n += -1
+    return out
+
+
+
+
     """
     Takes in a string as an argument and return the given string in reverse.
     example reverse("cat") -> "tac"
@@ -45,6 +78,22 @@ def reverse(word:str)->str:
     """
 
 def fizzBuzzContinuous(n):
+    x = 1
+    out = ""
+    while x < n + 1:
+        if x % 5 == 0 and x % 3 == 0:
+            out += ("fizzbuzz ")
+            x += 1
+        elif x % 5 == 0:
+            out += ("buzz ")
+            x += 1
+        elif x % 3 == 0:
+            out += ("fizz ")
+            x += 1
+        else:
+            out += str(x) + " "
+            x += 1
+    return out[0:-1]
     """
     Modify the function such that it does the fizzbuzz operation on all numbers
     from 1 to n(inclusive).
@@ -60,6 +109,16 @@ def fizzBuzzContinuous(n):
     """
 
 def collatz(n):
+    out = str(n) + " "
+    while n != 1:
+        if n % 2 == 0:
+            n = int(n/2)
+            out+=str(n)+ " "
+        else:
+            n = (n*3) + 1
+            out+=str(n) + " "
+    return out[0:-1]
+
     """
     Modify this function such that it mimics the collatz conjecture starting at n
     and prints out each number.
@@ -72,9 +131,22 @@ def collatz(n):
 
 
 def fibonacci(n):
+    Fib = ""
+    first = 0
+    second = 1
+    for i in range(n):
+        if i <= 1:
+            Fib += str(i) + " "
+        else:
+            add  =  first + second
+            Fib +=f"{add} "
+            first  = second
+            second = add
+    return Fib[0:-1]
+
     """
     for the given argument n print out the first n numbers of the fibonacci
-    sequence in a single string sperated by spaces.
+    sequence in a single string separated by spaces.
     The fibonacci sequence is defined as a sequence that starts with 0 then 1 as
     the first two numbers. Every subsequent number is the prior two numbers added together.
     Example fibonacci(6) -> "0 1 1 2 3 5"
