@@ -30,8 +30,8 @@ print(backwards(20))
     """
 
 def randomRepeating():
-    RandNum = random.randint(1,10)
-    tries = 1
+    RandNum = 0
+    tries = 0
     while RandNum < 10:
         RandNum = random.randint(1,10)
         tries += 1
@@ -44,16 +44,18 @@ def randomRepeating():
     print(f"it took {tries} tries to get a 10")
 
 def randomRange(n):
-    x = 1
-    RandNum = random.randint(1,100)
-    while x < n:
-        x += 1
+    RandNumHigh = random.randint(1,100)
+    RandNumLow = RandNumHigh
+    TempRand = 0
+    for i in range(n - 1):
         TempRand = random.randint(1,100)
-        if TempRand > RandNum:
-            RandNum = TempRand
-    return(RandNum)
+        if TempRand > RandNumHigh:
+            RandNumHigh = TempRand
+        if TempRand < RandNumLow:
+            RandNumLow = TempRand
+    return(RandNumHigh, RandNumLow)
 
-    """
+"""
     Generate a random number from 1 to 100 n number of times. Then after that is
     done print out what the highest number and the lowers number was from the rolled numbers.
     NOTE: Given randomness no test for this question
